@@ -1,0 +1,48 @@
+$bg-image: url('../images/texture.png') no-repeat center center; 
+$font : 'Open Sans', sans-serif;
+$size-bg-img: cover;
+$bg-color: rgb(240, 240, 240);
+$font-color: black;
+$req-font-color: #4d4d4d;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family:  $font;
+}
+
+ html, body{
+  background: $bg-color;
+  color: $font-color;
+}
+
+.App{
+  background: $bg-image;
+  -webkit-background-size: $size-bg-img;
+  -moz-background-size: $size-bg-img;
+  -o-background-size: $size-bg-img;
+  background-size: $size-bg-img;
+  .main{
+    padding: 30px;
+    height: 100vh;
+    .row .title{
+      font-weight: 800;
+    }
+    .row .requires_field{
+      font-size: 1.2rem;
+      color: $req-font-color;
+    }
+  }
+}
+
+
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { 
+  .App{
+    .main{
+      height: 100%;
+    }
+  }
+ }

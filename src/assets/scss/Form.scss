@@ -1,0 +1,125 @@
+$padding-label: 15px 0px 15px 0px;
+$padding-bt-row: 15px;
+$font-suscb-color: #4d4d4d;
+$border-default: 4px solid #d0e8e6;
+$border-default-danger: 4px solid #f193a5;
+$form-fields-height: 60px;
+$font-weight-custom-fc: 600;
+$font-size: 18px;
+$border-radius: 0.01rem;
+$bg-color: #803093;
+$btn-box-shadow:  -3px 10px 19px 3px #adadad;
+$btn-border: 1px solid #d5d5d5;
+$color-error: #ee4266;
+$background-error-color: #ebced4;
+
+
+
+form label{
+    padding: $padding-label;
+}
+  
+
+form row{
+    padding-bottom: $padding-bt-row;
+}
+
+.suscribe{
+    font-weight: $font-weight-custom-fc;
+    font-size: $font-size;
+    color: $font-suscb-color;
+    .error-validation{
+        color:$color-error;
+    }
+}
+
+.custom-fc{
+    background-color: transparent;
+    font-weight: $font-weight-custom-fc;
+    font-size: $font-size;
+    color: $font-suscb-color;
+    border:none;
+    padding:0px;
+    input.green{
+        border-radius: $border-radius;
+        border: $border-default;
+    }
+    input.red{
+        border-radius: $border-radius;
+        border: $border-default-danger;
+        background-color: $background-error-color;
+    }
+    input[type="text"] {
+        height: $form-fields-height;
+    }
+    input[type="email"] {
+        height: $form-fields-height;
+    }
+    select {
+        height: $form-fields-height;
+    }
+    .form-select{
+        font-size:15px;
+        font-weight: 600;
+        text-align: center;
+        background-image: url('../images/text-expand-arrow.svg');
+    }
+    .green{
+        border-radius: $border-radius;
+        border: $border-default;
+    }
+    .red{
+        border-radius: $border-radius;
+        border:$border-default-danger;
+        background-color: $background-error-color;
+    }
+    .form-control:focus {
+        box-shadow: none;
+    }
+}
+
+.form-check {
+    .form-check-input[type="checkbox"] {
+        border-radius: $border-radius;
+        width: 1.5em;
+        height: 1.5em;  
+        border:$border-default;
+    }
+    input[type=checkbox]:checked {
+        background-image: url('../images/check.svg');
+        border: 4px solid $bg-color;
+        background-color: $bg-color;
+    } 
+    label{
+        padding-top: 5px;
+        padding-left:10px;
+        font-size:16px;
+        font-weight: 600;
+    }
+    .form-check-input:focus{
+        outline: 0;
+        box-shadow: none;
+    }
+}
+.form-button{
+    button{
+        width: 100%;
+        border-radius: 1.75rem;
+        height: 50px;
+    }
+    button.btn.btn-primary.submit{
+        background-color: $bg-color ;
+        border: $bg-color;
+        box-shadow: $btn-box-shadow;
+        font-size:16px;
+        font-weight: 600;
+    }
+    button.btn.btn-primary.reset{
+        background-color: white ;
+        border:$btn-border;
+        box-shadow: $btn-box-shadow;
+        color:$font-suscb-color;
+        font-size:16px;
+        font-weight: 600;
+    }
+}
