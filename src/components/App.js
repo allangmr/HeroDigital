@@ -1,14 +1,9 @@
 
-import { useState } from 'react';
 import '../assets/scss/App.scss';
 import Form from './Form';
 
 function App() {
-  const [subs, setSubs] = useState([]);
-  const addSubs = (log) => {
-    let logs = [...subs, log];
-    setSubs(logs);
-  }
+
 
   return (
     <div className="App container">
@@ -21,7 +16,7 @@ function App() {
             <p className="requires_field py-3">*Indicates Required Field</p>
           </div>
           <div className="row">
-            <Form addSubsLog={addSubs} />
+            <Form />
           </div>
         </div>
       </div>

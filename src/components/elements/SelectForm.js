@@ -6,8 +6,8 @@ function SelectForm({setEuresident, euResident, error}) {
             <label htmlFor="euResident">EU RESIDENT*</label>
             <select className={`form-select form-select-lg mb-3 ${error}`} aria-label="Select Eu Resident" onChange={e => setEuresident(e.target.value)} value={euResident}>
                 <option value="">- SELECT ONE -</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
             </select>
         </div>
     )

@@ -7,9 +7,8 @@ import InputsForm from './elements/InputsForm';
 import SelectForm from './elements/SelectForm';
 import Validation from './elements/Validation';
 
-const Form = ({addSubsLog}) => {
+const Form = () => {
 
-    const [values, setValues] = useState("");
 
     //States Values
     const [firstName, setFirstName] = useState("");
@@ -69,45 +68,54 @@ const Form = ({addSubsLog}) => {
         return true;
     }
 
-    const saveFormData = () => {
-
+    const saveFormData = async(data) => {
+        
         //Simulation Url Encode
-        // var formBody = [];
-        // for (var property in values) {
-        //     var encodedKey = encodeURIComponent(property);
-        //     var encodedValue = encodeURIComponent(values[property]);
-        //     formBody.push(encodedKey + "=" + encodedValue);
-        // }
-        // formBody = formBody.join("&");
+        var formBody = [];
+        for (var property in data) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(data[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
 
 
         //Simulation to send api
-        // const responses = await fetch('/api/registration', {
-        //   method: 'POST',
-        // headers: {
-        //     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        // },
-        // body: formBody
-        // });
-        // http api response.
-        const responseApi = 200;
-        if (responseApi === 200) {
+
+        console.log(formBody);
+        fetch('http://localhost:3000/subscription', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: formBody
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Success:', data);
             const responses = { 
-                    "status": "success", 
-                    "message": "Thank you. You are now subscribed." 
+                "status": "success", 
+                "message": "Thank you. You are now subscribed." 
             }    
             console.log(JSON.stringify(responses));
+            //Clean Form
+            handleReset();
+            //ShowConfirmation
+            setshowConfirmation("d-block");
             return true;
-        }
-        else{
+          })
+          .catch((error) => {
+            console.error('Error:', error);
             const responses = { 
                 "status": "error", 
                 "message": "Invalid Subscription request." 
             }  
-            //throw new Error(`Request failed`); 
             console.log(JSON.stringify(responses)); 
-            throw new Error(`Request failed`); 
-        }
+            //showError Message
+            setShowError("d-block");
+            return false;
+          });
+
       }
 
 
@@ -122,20 +130,11 @@ const Form = ({addSubsLog}) => {
         }else{
             //SendToAPI
             try {
-                //SetValues form
-                setValues({firstName:firstName, lastName:lastName, email:email,org:org, euResident:euResident, advances:advances, alerts:alerts, other:other })
                 //Call to Api and Return
-                saveFormData();
-                //Clean Form
-                handleReset();
-                //ShowConfirmation
-                setshowConfirmation("d-block");
+                saveFormData({firstName:firstName, lastName:lastName, email:email,org:org, euResident:euResident, advances:advances, alerts:alerts, other:other });
             } catch (e) {
                 console.log(e);
-                //showError Message
-                setShowError("d-block");
             }
-            addSubsLog(values)
         }
 
     }
